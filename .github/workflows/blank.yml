@@ -36,7 +36,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          path: $GITHUB_WORKSPACE/checkout
+          path: checkout
       - name: Show free space
         run: |
           echo "Free space:"
@@ -44,15 +44,19 @@ jobs:
       - name: Show workspace
         run: |
           echo "Workspace:"
-          ls $GITHUB_WORKSPACE/checkout
+          ls checkout
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         env:
-          RUNNER_TEMP: $GITHUB_WORKSPACE/temp
+          RUNNER_TEMP: temp
         with:
-          path: $GITHUB_WORKSPACE/checkout
+          path: checkout
+      - name: Show Temp
+        run: |
+          echo "Temp:"
+          ls temp          
       - name: Show free space
         run: |
           echo "Free space:"
